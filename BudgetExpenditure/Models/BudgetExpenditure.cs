@@ -26,7 +26,7 @@ namespace BudgetExpenditure.Models
         public Nullable<decimal> TotalExpenditure { get; set; }
         public Nullable<decimal> PlannedLastYear { get; set; }
         public Nullable<decimal> ActualLastYear { get; set; }
-    
+
         public Dictionary<int, string> Departments { get; set; }
 
         public Dictionary<int, string> Heads { get; set; }

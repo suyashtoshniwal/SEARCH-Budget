@@ -53,6 +53,7 @@ namespace System.Web.Mvc
             if (showIndex)
                 table.AddIndex();
 
+            var tableHtmlString = table.ToHtmlString().ToString();
             return table.ToHtmlString();
             //return source.Report(false, reportColumns.Select(x => x.HeaderText), reportColumns.Select(x => x.TemplateItem), reportColumns.Select(x => x.style));
         }
@@ -86,6 +87,11 @@ namespace System.Web.Mvc
             table.CellSpacing = 0;
             table.CssClass = cssClass;
             table.PivotHeader(".", pivotLevel);
+
+            table.ApplyStyle(new UI.WebControls.Style() { CssClass = "table table-striped table-bordered table-condensed" });
+
+            var tableHtmlString = table.ToHtmlString().ToString();
+
             return table.ToHtmlString();
         }
         public static HtmlString Report<T>(this IEnumerable<T> source, params string[] columns) where T : class
@@ -130,6 +136,8 @@ namespace System.Web.Mvc
 
             if (showIndex)
                 table.AddIndex();
+
+            var tableHtmlString = table.ToHtmlString().ToString();
 
             return table.ToHtmlString();
         }

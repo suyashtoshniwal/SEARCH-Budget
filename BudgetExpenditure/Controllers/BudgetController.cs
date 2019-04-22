@@ -15,34 +15,13 @@ namespace BudgetExpenditure.Controllers
         // GET: Budget
         public ActionResult Index()
         {
-            //string cNames = "user0,user1,user2,user3,user4";
-            //string rNames = "a,b,c,d,e";
-            //BudgetExpenditureViewModel viewModel = new BudgetExpenditureViewModel();
+            
 
-
-            //viewModel.mytable["user1", "b"] = 1;
-            //viewModel.mytable["user1", "c"] = 2;
-            //viewModel.mytable["user0", "a"] = 3;
-            //viewModel.mytable["user2", "d"] = 4;
-            //viewModel.mytable["user3", "e"] = 5;
-            //viewModel.mytable["user4", "a"] = 6;
-            //viewModel.mytable["user0", "b"] = 7;
-
-            var nirmanEntities = new BudgetExpenditure.Models.BudgetExpenditureEntities();
-            var context = nirmanEntities.BudgetExpenditures;
-            var departments = nirmanEntities.Departments.ToDictionary(m => m.Id, m => m.Name);
-            var heads = nirmanEntities.Heads.ToDictionary(m => m.Id, m => m.Name);
-            //List<string> selectedColumns = new List<string>();
-
-            //foreach(var selectedColumn in SelectedColumnFields)
-            //{
-            //    int selectedColumnInt = Convert.ToInt32(selectedColumn);
-
-            //    selectedColumns.Add(Enum.GetName(typeof(ColumnEnumerations.Columns), selectedColumnInt));
-            //}
-
-            //IEnumerable<string> newList = selectedColumns;
-            //ViewBag.SelectedColumns = newList;
+            var budgetEntities = new BudgetExpenditure.Models.BudgetExpenditureEntities();
+            var context = budgetEntities.BudgetExpenditures;
+            var departments = budgetEntities.Departments.ToDictionary(m => m.Id, m => m.Name);
+            var heads = budgetEntities.Heads.ToDictionary(m => m.Id, m => m.Name);
+           
 
             var participants = context.ToList();
             participants[0].Departments = departments;
@@ -121,7 +100,25 @@ namespace BudgetExpenditure.Controllers
                 budgetEntities.BudgetExpenditures.Add(budgetExpenditure);
             }
 
+            if (!string.IsNullOrEmpty(head.AdministrativeOverheads.ToString()))
+            {
+                budgetExpenditure = new Models.BudgetExpenditure();
+                budgetExpenditure.HeadId = budgetEntities.Heads.Where(c => c.Name == "Organizational Administrative overheads including Legal / Statuatory Aporovals & Processes (Office space and equipments rent, Communication, salaries of administrative staff, account keeping, audits, bank charges, publicity, public relations, guests, travel, local transport, office stationary, administrative meetings)").FirstOrDefault().Id;
+                budgetExpenditure.DepartmentId = head.CurrentDepartmentId;
+                budgetExpenditure.Year = head.Year;
+                budgetExpenditure.EstimatedBudget = head.AdministrativeOverheads;
+                budgetEntities.BudgetExpenditures.Add(budgetExpenditure);
+            }
 
+            if (!string.IsNullOrEmpty(head.AMCCMC.ToString()))
+            {
+                budgetExpenditure = new Models.BudgetExpenditure();
+                budgetExpenditure.HeadId = budgetEntities.Heads.Where(c => c.Name == "AMC & CMC cost for Assets as per Actuals cost").FirstOrDefault().Id;
+                budgetExpenditure.DepartmentId = head.CurrentDepartmentId;
+                budgetExpenditure.Year = head.Year;
+                budgetExpenditure.EstimatedBudget = head.AdministrativeOverheads;
+                budgetEntities.BudgetExpenditures.Add(budgetExpenditure);
+            }
             //if (!string.IsNullOrEmpty(head.Personell.ToString()))
             //{
             //    budgetExpenditure.HeadId = budgetEntities.Heads.Where(c => c.Name == "Personnel").FirstOrDefault().Id;

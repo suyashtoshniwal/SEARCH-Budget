@@ -74,7 +74,7 @@ public class Pivot
         // Gets the list of columns .(dot) separated.
         //var colList = _Source.Select(x => (columnFields.Select(n => x[n]).Aggregate((a, b) => a += Separator + b.ToString())).ToString()).Distinct().OrderBy(c => c);
 
-        //dt.Columns.Add(rowField);
+        dt.Columns.Add(rowField);
 
         //var columnsList = colList.ToList();
         //columnsList.RemoveAt(0);
@@ -140,7 +140,13 @@ public class Pivot
             var column = departments[Convert.ToInt32(colName)];
             dt.Columns[colName].ColumnName = column;  // Cretes the result columns.//
         }
-        return dt;
+
+        foreach (DataRow row in dt.Rows)
+        {
+            row[rowField] = heads[Convert.ToInt32(row[rowField])];
+        }
+
+               return dt;
     }
 
 
