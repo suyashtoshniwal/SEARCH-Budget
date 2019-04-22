@@ -157,11 +157,6 @@ namespace BudgetExpenditure.Controllers
             //    budgetExpenditure.HeadId = budgetEntities.Heads.Where(c => c.Name == "Personnel").FirstOrDefault().Id;
             //    budgetExpenditure.EstimatedBudget = head.Personell;
             //}
-            //if (!string.IsNullOrEmpty(head.Personell.ToString()))
-            //{
-            //    budgetExpenditure.HeadId = budgetEntities.Heads.Where(c => c.Name == "Personnel").FirstOrDefault().Id;
-            //    budgetExpenditure.EstimatedBudget = head.Personell;
-            //}
 
             //var model = new HeadEntry();
 

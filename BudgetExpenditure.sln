@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetExpenditure", "BudgetExpenditure\BudgetExpenditure.csproj", "{F647E931-C239-445F-AD90-2F4A8F5BBD33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportControl", "..\..\..\Downloads\MvcReport\MvcReport\ReportControl\ReportControl.csproj", "{1D45D7C2-E985-4987-9FC5-1134A6D77558}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportControl", "ReportControl\ReportControl.csproj", "{1D45D7C2-E985-4987-9FC5-1134A6D77558}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

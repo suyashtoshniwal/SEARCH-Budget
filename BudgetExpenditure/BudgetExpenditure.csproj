@@ -267,7 +267,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Downloads\MvcReport\MvcReport\ReportControl\ReportControl.csproj">
+    <ProjectReference Include="..\ReportControl\ReportControl.csproj">
       <Project>{1d45d7c2-e985-4987-9fc5-1134a6d77558}</Project>
       <Name>ReportControl</Name>
     </ProjectReference>
