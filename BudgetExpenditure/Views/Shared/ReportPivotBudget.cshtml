@@ -1,0 +1,14 @@
+﻿@model IEnumerable<BudgetExpenditure.Models.BudgetExpenditure>
+
+
+@{
+    ViewBag.Title = "ReportPivotBudget";
+}
+
+<h2>ReportPivotBudget</h2>
+
+@{ Dictionary<int, string> heads = Model.First().Heads;}
+
+@{ Dictionary<int, string> departments = Model.First().Departments;}
+
+@Model.ReportWithPivot("Bootstrap.css", "HeadId", "EstimatedBudget", AggregateFunction.First, departments, heads, "DepartmentId")
