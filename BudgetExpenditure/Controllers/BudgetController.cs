@@ -316,7 +316,7 @@ namespace BudgetExpenditure.Controllers
                 budgetExpenditure.HeadId = budgetEntities.Heads.Where(c => c.Name == "Total Budgetary Requirement (H - I)").FirstOrDefault().Id;
                 budgetExpenditure.DepartmentId = head.CurrentDepartmentId;
                 budgetExpenditure.Year = head.Year;
-                budgetExpenditure.EstimatedBudget = head.IncomeOftheProgram;
+                budgetExpenditure.EstimatedBudget = head.TotalBudgetaryRequirement;
                 budgetEntities.BudgetExpenditures.Add(budgetExpenditure);
             }
             
