@@ -11,7 +11,7 @@ namespace BudgetExpenditure.Controllers
 {
     public class BudgetController : Controller
     {
-        BudgetExpenditureEntities budgetEntities = new BudgetExpenditureEntities();
+        BudgetExpenditureEntities budgetEntities  = new BudgetExpenditureEntities();
         // GET: Budget
         public ActionResult Index()
         {
