@@ -150,6 +150,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Budget1Controller.cs" />
     <Compile Include="Controllers\BudgetController.cs" />
     <Compile Include="Controllers\ExpenditureController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -175,6 +176,7 @@
       <DependentUpon>BudgetExpenditure.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BudgetExpenditureViewModel.cs" />
+    <Compile Include="Models\DBHeadPropertyMapping.cs" />
     <Compile Include="Models\Department.cs">
       <DependentUpon>BudgetExpenditure.tt</DependentUpon>
     </Compile>
@@ -245,6 +247,7 @@
     <Content Include="Views\Budget\Index.cshtml" />
     <Content Include="Views\Shared\ReportPivotBudget.cshtml" />
     <Content Include="Views\Budget\Create.cshtml" />
+    <Content Include="Views\Budget1\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

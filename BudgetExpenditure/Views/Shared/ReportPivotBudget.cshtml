@@ -5,10 +5,17 @@
     ViewBag.Title = "ReportPivotBudget";
 }
 
-<h2>Dashboard</h2>
 
 @{ Dictionary<int, string> heads = Model.First().Heads;}
 
 @{ Dictionary<int, string> departments = Model.First().Departments;}
 
-@Model.ReportWithPivot("Bootstrap.css", "HeadId", "EstimatedBudget", AggregateFunction.First, departments, heads, "DepartmentId")
+
+<div class="row justify-content-center">
+    <h2>Dashboard</h2>
+    @Html.ActionLink("Create New", "Create")
+    &nbsp;&nbsp;
+    @Html.ActionLink("Edit", "Edit", "Budget1");
+    @Model.ReportWithPivot("Bootstrap.css", "HeadId", "EstimatedBudget", AggregateFunction.First, departments, heads, "DepartmentId")
+
+</div>

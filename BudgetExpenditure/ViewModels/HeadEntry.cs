@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Web;
 using System.Web.Mvc;
@@ -57,9 +58,34 @@ namespace BudgetExpenditure.ViewModels
         public decimal FeesConsultancy { get; set; }
 
         public decimal CapitalCost { get; set; }
+
+        public decimal TotalExpenditure { get; set; }
         public decimal AdministrativeOverheads { get; set; }
         public decimal ContingencyFund { get; set; }
+        public decimal GrandTotalExpenditure { get; set; }
         public decimal IncomeOftheProgram { get; set; }
+        public decimal TotalBudgetaryRequirement { get; set; }
+
+        public object this[string propertyName]
+        {
+            get
+            {
+                // probably faster without reflection:
+                // like:  return Properties.Settings.Default.PropertyValues[propertyName] 
+                // instead of the following
+                Type myType = typeof(HeadEntry);
+                PropertyInfo myPropInfo = myType.GetProperty(propertyName);
+                return myPropInfo.GetValue(this, null);
+            }
+            set
+            {
+                Type myType = typeof(HeadEntry);
+                PropertyInfo myPropInfo = myType.GetProperty(propertyName);
+                myPropInfo.SetValue(this, value, null);
+
+            }
+
+        }
 
     }
 }
