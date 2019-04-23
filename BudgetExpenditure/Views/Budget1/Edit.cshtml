@@ -1,0 +1,65 @@
+﻿@model BudgetExpenditure.ViewModels.HeadEntry
+
+@{
+    ViewBag.Title = "Create";
+}
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script>
+        $(document).ready(function () {
+            $("#CurrentDepartmentId").on("change", function () {
+                $.ajax(
+                    {
+                        url: '/Budget1/GetBudgetExpenditureRecord',
+                        type: 'GET',
+                        data: { 'department': $(this).attr("value"), 'year': $(Year).attr("value") },
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            $("#partialDiv").html(data);
+                            alert("url: " + url);
+                        },
+                        error: function () {
+                            alert("error");
+                        }
+                    });
+            });
+        });
+    </script>
+
+</head>
+<body>
+
+    @using (Html.BeginForm())
+    {
+
+        <div class="form-horizontal">
+            <h4>Estimated Budget</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Year, Model.Years1, new { htmlAttributes = new { @class = "form-control", id = "ddlYear" } })
+                    @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.CurrentDepartmentId, Model.Departments, new { htmlAttributes = new { @class = "form-control", id = "ddlDepartment" } })
+                    @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div id="partialDiv">
+                @Html.Partial("BudgetEdit")
+            </div>
+        </div>
+    }
+    </body>
+</html>
+    
+

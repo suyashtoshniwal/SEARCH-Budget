@@ -57,7 +57,23 @@ namespace BudgetExpenditure.Controllers
                 model[DBHeadPropertyMapping.DBHeadMapping[head]] = budgetEntityResult.EstimatedBudget;
             }
 
-            return View("Create", model);
+            return View("Edit", model);
+        }
+
+
+        public PartialViewResult GetBudgetExpenditureRecord(int year, int department)
+        {
+            var model = new HeadEntry();
+            var budgetEntitiesResult = budgetEntities.BudgetExpenditures.Where(c => c.DepartmentId == department && c.Year == model.Year).ToList();
+
+            foreach (var budgetEntityResult in budgetEntitiesResult)
+            {
+                // Get head
+                var head = budgetEntityResult.Head.Name;
+                model[DBHeadPropertyMapping.DBHeadMapping[head]] = budgetEntityResult.EstimatedBudget;
+            }
+
+            return PartialView("BudgetEdit", model);
         }
     }
 }

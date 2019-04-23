@@ -248,10 +248,12 @@
     <Content Include="Views\Shared\ReportPivotBudget.cshtml" />
     <Content Include="Views\Budget\Create.cshtml" />
     <Content Include="Views\Budget1\Create.cshtml" />
+    <Content Include="Views\Shared\BudgetEdit.cshtml" />
+    <Content Include="Views\Budget1\Edit.cshtml" />
+    <Content Include="Views\Expenditure\Q1Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Expenditure\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
