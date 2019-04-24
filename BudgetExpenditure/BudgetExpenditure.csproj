@@ -251,6 +251,7 @@
     <Content Include="Views\Shared\BudgetEdit.cshtml" />
     <Content Include="Views\Budget1\Edit.cshtml" />
     <Content Include="Views\Expenditure\Q1Create.cshtml" />
+    <Content Include="Views\Shared\ReportPivotExpenditure.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

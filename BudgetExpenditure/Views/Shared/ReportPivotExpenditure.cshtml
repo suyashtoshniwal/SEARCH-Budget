@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BudgetExpenditure.Models.BudgetExpenditure>
+
+
+@{
+    ViewBag.Title = "ReportPivotExpenditure";
+}
+
+
+@{ Dictionary<int, string> heads = Model.First().Heads;}
+
+@{ Dictionary<int, string> departments = Model.First().Departments;}
+
+
+<div class="row justify-content-center">
+    <table>
+        <tr>
+            <td>
+                <h2>Dashboard</h2>
+                @Html.ActionLink("Create New", "Create")
+                &nbsp;&nbsp;
+                @Html.ActionLink("Edit", "Edit", "Budget1");
+                @Model.ReportWithPivot("Bootstrap.css", "HeadId", "ExpenditureQ1", AggregateFunction.First, departments, heads, "DepartmentId")
+            </td>
+            <td>
+                @Model.ReportWithPivot("Bootstrap.css", "HeadId", "ExpenditureQ1", AggregateFunction.First, departments, heads, "DepartmentId")
+            </td>
+            <td>
+                @Model.ReportWithPivot("Bootstrap.css", "HeadId", "TotalExpenditure", AggregateFunction.First, departments, heads, "DepartmentId")
+            </td>
+            
+        </tr>
+    </table>
+
+</div>
+
