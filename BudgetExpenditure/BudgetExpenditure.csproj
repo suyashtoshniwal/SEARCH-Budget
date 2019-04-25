@@ -154,6 +154,7 @@
     <Compile Include="Controllers\BudgetController.cs" />
     <Compile Include="Controllers\ExpenditureController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,6 +181,7 @@
     <Compile Include="Models\Department.cs">
       <DependentUpon>BudgetExpenditure.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DepartmentReportViewModel.cs" />
     <Compile Include="Models\Head.cs">
       <DependentUpon>BudgetExpenditure.tt</DependentUpon>
     </Compile>
@@ -254,6 +256,7 @@
     <Content Include="Views\Budget1\Edit.cshtml" />
     <Content Include="Views\Expenditure\Q1Create.cshtml" />
     <Content Include="Views\Shared\ReportPivotExpenditure.cshtml" />
+    <Content Include="Views\Report\DepartmentReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -298,7 +301,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52665</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:52665/</IISUrl>
+          <IISUrl>http://localhost:52666/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

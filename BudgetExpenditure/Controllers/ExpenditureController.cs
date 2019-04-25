@@ -78,7 +78,7 @@ namespace BudgetExpenditure.Controllers
             {
                 var record = budgetEntities.BudgetExpenditures.Where(c => c.DepartmentId == head.CurrentDepartmentId &&
                                                                  c.Year == head.Year &&
-                                                                 c.HeadId == budgetEntities.Heads.Where(h => h.Name == "Personnel").FirstOrDefault().Id).First();
+                                                                 c.HeadId == budgetEntities.Heads.Where(h => h.Name == "Personnel").FirstOrDefault().Id).FirstOrDefault();
                 if (record != null)
                 {
                     record.ExpenditureQ1 = head.Personell;
