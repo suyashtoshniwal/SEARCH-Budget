@@ -29,6 +29,38 @@ namespace BudgetExpenditure.Controllers
             return View("ReportPivotExpenditure", participants);
         }
 
+
+        public ActionResult Create()
+        {
+            var model = new HeadEntry();
+
+            var departments = budgetEntities.Departments.Select(c => new SelectListItem
+            {
+                Value = c.Id.ToString(),
+                Text = c.Name
+            });
+
+
+            model.Departments = departments;
+
+            var next25Years = from n in Enumerable.Range(0, 25)
+                              select DateTime.Now.Year + n;
+
+            model.Years = next25Years;
+
+            var years = next25Years.Select(c => new SelectListItem
+            {
+                Value = c.ToString() + "-" + ((int)c + 1).ToString(),
+                Text = c.ToString() + "-" + ((int)c + 1).ToString()
+            });
+
+            model.Years1 = years;
+
+
+            return View("Q1Create", model);
+        }
+
+
         [HttpPost]
         public ActionResult Create(HeadEntry head)
         {
