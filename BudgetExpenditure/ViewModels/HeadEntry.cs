@@ -14,12 +14,18 @@ namespace BudgetExpenditure.ViewModels
 
         public string Department { get; set; }
 
+        public string CurrentQuarterName { get; set; }
+
+        public IEnumerable<SelectListItem> Quarters { get; set; }
+
         public int CurrentDepartmentId { get; set; }
         public IEnumerable<SelectListItem> Departments { get; set; }
 
         public IEnumerable<int> Years { get; set; }
 
         public IEnumerable<SelectListItem> Years1 { get; set; }
+
+
 
         public decimal Personell { get; set; }
 
