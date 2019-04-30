@@ -1,0 +1,62 @@
+﻿
+@model List<BudgetExpenditure.Models.DepartmentReportViewModel>
+
+
+@{
+    ViewBag.Title = "DepartmentReport";
+}
+
+@{string department = Model.FirstOrDefault().Department; }
+
+<h2> @department HeadWise Report</h2>
+
+
+<table class="table-bordered" cellpadding="8">
+
+    <tr>
+        <th width="30%">Budget Head</th>
+        <th width="10%">Estimated Amount Per year</th>
+
+        <th width="10%">Expenditure Q1</th>
+        <th width="10%">Expenditure Q2</th>
+        <th width="10%">Expenditure Q3</th>
+        <th width="10%">Expenditure Q4</th>
+
+
+        <th width="10%">Total Expenditure Till Now</th>
+        <th width="10%">Balance Amount Left</th>
+    </tr>
+
+    @foreach (var result in Model)
+    {
+        <tr>
+            <td>
+                @result.Head
+            </td>
+            <td>
+                @result.EstimatedBudget
+            </td>
+
+            <td>
+                @result.ExpenditureQ1
+            </td>
+            <td>
+                @result.ExpenditureQ2
+            </td>
+            <td>
+                @result.ExpenditureQ3
+            </td>
+            <td>
+                @result.ExpenditureQ4
+            </td>
+            <td>
+                @result.ActualExpenditureTillQuarter
+            </td>
+            <td>
+
+                @result.BalanceLeftTillQuarter
+            </td>
+        </tr>
+    }
+
+</table>

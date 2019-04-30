@@ -256,7 +256,11 @@
     <Content Include="Views\Budget1\Edit.cshtml" />
     <Content Include="Views\Expenditure\Q1Create.cshtml" />
     <Content Include="Views\Shared\ReportPivotExpenditure.cshtml" />
-    <Content Include="Views\Report\DepartmentReport.cshtml" />
+    <Content Include="Views\Report\DepartmentwiseHeadwiseChart.cshtml" />
+    <Content Include="Views\Report\HeadwiseAllDepartmentsChart.cshtml" />
+    <Content Include="Views\Report\Create.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Report\DepartmentalAllHeadsTabularReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

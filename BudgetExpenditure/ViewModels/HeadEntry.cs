@@ -25,7 +25,11 @@ namespace BudgetExpenditure.ViewModels
 
         public IEnumerable<SelectListItem> Years1 { get; set; }
 
+        public IEnumerable<SelectListItem> Heads { get; set; }
 
+        public int CurrentHeadId { get; set; }
+
+        public string Head { get; set; }
 
         public decimal Personell { get; set; }
 

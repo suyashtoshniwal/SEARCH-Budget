@@ -1,13 +1,39 @@
-﻿@model IEnumerable<BudgetExpenditure.Models.DepartmentReportViewModel>
+﻿@model BudgetExpenditure.Models.DepartmentReportViewModel
 
 
 @{
     ViewBag.Title = "DepartmentReport";
 }
 
-<h2>DepartmentReport</h2>
+<h2>DepartmentHeadWiseReport</h2>
 
-<table class="table-bordered" cellpadding="8">
+<div style="align-content:center">
+    @{
+
+        string[] xValues = new string[] { "Estimated budget", "Q1 Expenses", "Till Q2 Expenses", "Till Q3 Expenses", "Till Q4 Expenses" };
+
+        decimal[] yValues = new decimal[] { Model.EstimatedBudget , Model.ExpenditureQ1,
+                                            Model.ExpenditureQ2, Model.ExpenditureQ3,
+                                            Model.ExpenditureQ4};
+
+
+        
+        var chart = new Chart(width: 1000, height: 1000, theme: ChartTheme.Yellow);
+
+
+        chart.AddTitle("Departmental Expenses Report")
+        .AddSeries(
+         chartType: "column",
+         xValue: new[] { "Estimated budget", "Q1 Expenses", "Till Q2 Expenses", "Till Q3 Expenses", "Till Q4 Expenses" },
+    yValues: new[] { yValues }
+
+        ).Write();
+
+    }
+
+</div>
+
+@*<table class="table-bordered" cellpadding="8">
 
     <tr>
         <th width="30%">Budget Head</th>
@@ -55,4 +81,4 @@
     </tr>
     }
 
-</table>
+</table>*@

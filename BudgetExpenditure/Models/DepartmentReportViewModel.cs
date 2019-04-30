@@ -9,20 +9,22 @@ namespace BudgetExpenditure.Models
     {
         public string Head { get; set; }
 
-        public string EstimatedBudget { get; set; }
+        public string Department { get; set; }
 
-        public string ActualExpenditureTillQuarter { get; set; }
+        public decimal EstimatedBudget { get; set; }
 
-        public string BalanceLeftTillQuarter { get; set; }
+        public decimal ActualExpenditureTillQuarter { get; set; }
 
-        public string ExpenditureQ1 { get; set; }
+        public decimal BalanceLeftTillQuarter { get; set; }
 
-        public string ExpenditureQ2 { get; set; }
+        public decimal ExpenditureQ1 { get; set; }
 
-        public string ExpenditureQ3 { get; set; }
+        public decimal ExpenditureQ2 { get; set; }
 
-        public string ExpenditureQ4 { get; set; }
+        public decimal ExpenditureQ3 { get; set; }
 
-        public string BalanceLeft { get; set; }
+        public decimal ExpenditureQ4 { get; set; }
+
+        public decimal BalanceLeft { get; set; }
     }
 }
