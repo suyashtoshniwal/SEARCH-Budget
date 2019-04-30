@@ -23,11 +23,13 @@ namespace BudgetExpenditure.Controllers
            
 
             var participants = context.ToList();
-            participants[0].Departments = departments;
-            participants[0].Heads = heads;
+            if (participants.Count() > 0)
+            {
+                participants[0].Departments = departments;
+                participants[0].Heads = heads;
+            }
 
             return View("ReportPivotBudget", participants);
-
             
         }
 
@@ -344,7 +346,7 @@ namespace BudgetExpenditure.Controllers
                 throw;
             }
 
-            return View("Index");
+            return Index();
         }
     }
 }

@@ -14,6 +14,12 @@ namespace BudgetExpenditure.Models
     
     public partial class BudgetExpenditure
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public BudgetExpenditure()
+        {
+            this.EstimatedBudget = 0m;
+        }
+    
         public int Id { get; set; }
         public string Year { get; set; }
         public int HeadId { get; set; }
@@ -27,6 +33,7 @@ namespace BudgetExpenditure.Models
         public Nullable<decimal> PlannedLastYear { get; set; }
         public Nullable<decimal> ActualLastYear { get; set; }
 
+        public string Quarter { get; set; }
         public Dictionary<int, string> Departments { get; set; }
 
         public Dictionary<int, string> Heads { get; set; }

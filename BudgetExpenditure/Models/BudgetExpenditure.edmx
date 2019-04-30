@@ -13,14 +13,14 @@
           <Property Name="Year" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="HeadId" Type="int" Nullable="false" />
           <Property Name="DepartmentId" Type="int" Nullable="false" />
-          <Property Name="EstimatedBudget" Type="decimal" Precision="11" Scale="2" />
-          <Property Name="ExpenditureQ1" Type="decimal" Precision="11" Scale="2" />
-          <Property Name="ExpenditureQ2" Type="decimal" Precision="11" Scale="2" />
-          <Property Name="ExpenditureQ3" Type="decimal" Precision="11" Scale="2" />
-          <Property Name="ExpenditureQ4" Type="decimal" Precision="11" Scale="2" />
-          <Property Name="TotalExpenditure" Type="decimal" Precision="11" Scale="2" />
-          <Property Name="PlannedLastYear" Type="decimal" Precision="11" Scale="2" />
-          <Property Name="ActualLastYear" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="EstimatedBudget" Type="decimal" Precision="11" Scale="2" StoreGeneratedPattern="None" />
+          <Property Name="ExpenditureQ1" Type="decimal" Precision="11" Scale="2" StoreGeneratedPattern="Computed" />
+          <Property Name="ExpenditureQ2" Type="decimal" Precision="11" Scale="2" StoreGeneratedPattern="Computed" />
+          <Property Name="ExpenditureQ3" Type="decimal" Precision="11" Scale="2" StoreGeneratedPattern="Computed" />
+          <Property Name="ExpenditureQ4" Type="decimal" Precision="11" Scale="2" StoreGeneratedPattern="Computed" />
+          <Property Name="TotalExpenditure" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Computed" />
+          <Property Name="PlannedLastYear" Type="decimal" Precision="11" Scale="2" StoreGeneratedPattern="Computed" />
+          <Property Name="ActualLastYear" Type="decimal" Precision="11" Scale="2" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -41,47 +41,15 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Role" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <Association Name="FK_BudgetExpenditure_Head">
-          <End Role="Head" Type="Self.Head" Multiplicity="1" />
-          <End Role="BudgetExpenditure" Type="Self.BudgetExpenditure" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Head">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BudgetExpenditure">
-              <PropertyRef Name="HeadId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Department">
-          <End Role="Department" Type="Self.Department" Multiplicity="1" />
-          <End Role="BudgetExpenditure" Type="Self.BudgetExpenditure" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Department">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BudgetExpenditure">
-              <PropertyRef Name="DepartmentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="BudgetExpenditureModelStoreContainer">
           <EntitySet Name="BudgetExpenditure" EntityType="Self.BudgetExpenditure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Head" EntityType="Self.Head" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_BudgetExpenditure_Head" Association="Self.FK_BudgetExpenditure_Head">
-            <End Role="Head" EntitySet="Head" />
-            <End Role="BudgetExpenditure" EntitySet="BudgetExpenditure" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Department" Association="Self.FK_Department">
-            <End Role="Department" EntitySet="Department" />
-            <End Role="BudgetExpenditure" EntitySet="BudgetExpenditure" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -95,14 +63,14 @@
           <Property Name="Year" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="HeadId" Type="Int32" Nullable="false" />
           <Property Name="DepartmentId" Type="Int32" Nullable="false" />
-          <Property Name="EstimatedBudget" Type="Decimal" Precision="11" Scale="2" />
-          <Property Name="ExpenditureQ1" Type="Decimal" Precision="11" Scale="2" />
-          <Property Name="ExpenditureQ2" Type="Decimal" Precision="11" Scale="2" />
-          <Property Name="ExpenditureQ3" Type="Decimal" Precision="11" Scale="2" />
-          <Property Name="ExpenditureQ4" Type="Decimal" Precision="11" Scale="2" />
-          <Property Name="TotalExpenditure" Type="Decimal" Precision="11" Scale="2" />
-          <Property Name="PlannedLastYear" Type="Decimal" Precision="11" Scale="2" />
-          <Property Name="ActualLastYear" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="EstimatedBudget" Type="Decimal" Precision="11" Scale="2" annotation:StoreGeneratedPattern="None" DefaultValue="0" Nullable="true" />
+          <Property Name="ExpenditureQ1" Type="Decimal" Precision="11" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ExpenditureQ2" Type="Decimal" Precision="11" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ExpenditureQ3" Type="Decimal" Precision="11" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ExpenditureQ4" Type="Decimal" Precision="11" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="TotalExpenditure" Type="Decimal" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="PlannedLastYear" Type="Decimal" Precision="11" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ActualLastYear" Type="Decimal" Precision="11" Scale="2" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Head" Relationship="Self.FK_BudgetExpenditure_Head" FromRole="BudgetExpenditure" ToRole="Head" />
           <NavigationProperty Name="Department" Relationship="Self.FK_Department" FromRole="BudgetExpenditure" ToRole="Department" />
         </EntityType>
@@ -165,7 +133,7 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Role" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>

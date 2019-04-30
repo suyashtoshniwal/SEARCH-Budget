@@ -261,6 +261,7 @@
     <Content Include="Views\Report\Create.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
     <Content Include="Views\Report\DepartmentalAllHeadsTabularReport.cshtml" />
+    <Content Include="Views\Expenditure\CreateReadOnly.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

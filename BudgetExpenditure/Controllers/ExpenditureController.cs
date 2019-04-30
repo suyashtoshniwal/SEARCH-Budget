@@ -15,22 +15,56 @@ namespace BudgetExpenditure.Controllers
         // GET: Expenditure
         public ActionResult Index()
         {
+            var model = new HeadEntry();
+
+            var next25Years = from n in Enumerable.Range(0, 25)
+                              select DateTime.Now.Year + n;
+
+            model.Years = next25Years;
+
+            var years = next25Years.Select(c => new SelectListItem
+            {
+                Value = c.ToString() + "-" + ((int)c + 1).ToString(),
+                Text = c.ToString() + "-" + ((int)c + 1).ToString()
+            });
+
+            model.Years1 = years;
+
+            var quarters = new List<string>() { "Q1", "Q2", "Q3", "Q4" };
+
+            var qs = quarters.Select(c => new SelectListItem
+            {
+                    Value = c.ToString(),
+                    Text = c.ToString()
+            });
+
+            model.Quarters = qs;
+
+            return View("CreateReadOnly", model);
+        }
+
+        [HttpPost]
+        public ActionResult GetExpenditureReadOnlyView(HeadEntry head)
+        {
             var budgetEntities = new BudgetExpenditure.Models.BudgetExpenditureEntities();
             var context = budgetEntities.BudgetExpenditures;
             var departments = budgetEntities.Departments.ToDictionary(m => m.Id, m => m.Name);
             var heads = budgetEntities.Heads.ToDictionary(m => m.Id, m => m.Name);
 
 
-            var participants = context.Where(c => c.DepartmentId == 1 && c.Year == "2019-2020").ToList();
+            var participants = context.ToList();
+            if (participants.Count() > 0)
+            {
+                participants[0].Quarter = head.CurrentQuarterName;
+                participants[0].Departments = departments;
+                participants[0].Heads = heads;
+            }
 
-            participants[0].Departments = departments;
-            participants[0].Heads = heads;
-
+            
             return View("ReportPivotExpenditure", participants);
         }
 
-
-        public ActionResult Create()
+            public ActionResult Create()
         {
             var model = new HeadEntry();
 
@@ -833,7 +867,7 @@ namespace BudgetExpenditure.Controllers
                 throw;
             }
 
-            return View("Index");
+            return Index();
         }
 
     }

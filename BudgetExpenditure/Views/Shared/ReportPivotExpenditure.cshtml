@@ -2,34 +2,30 @@
 
 
 @{
-    ViewBag.Title = "ReportPivotExpenditure";
+    ViewBag.Title = "ReportPivotBudget";
 }
 
+@{ Dictionary<int, string> heads = new Dictionary<int, string>();}
+@{ Dictionary<int, string> departments = new Dictionary<int, string>();}
 
-@{ Dictionary<int, string> heads = Model.First().Heads;}
+@{ if (Model.Count() > 0) { heads = Model.First().Heads; }
+}
 
-@{ Dictionary<int, string> departments = Model.First().Departments;}
-
+@{ if (Model.Count() > 0) { departments = Model.First().Departments; }
+}
 
 <div class="row justify-content-center">
-    <table>
-        <tr>
-            <td>
-                <h2>Dashboard</h2>
-                @Html.ActionLink("Create New", "Create")
-                &nbsp;&nbsp;
-                @Html.ActionLink("Edit", "Edit", "Budget1");
-                @Model.ReportWithPivot("Bootstrap.css", "HeadId", "ExpenditureQ1", AggregateFunction.First, departments, heads, "DepartmentId")
-            </td>
-            <td>
-                @Model.ReportWithPivot("Bootstrap.css", "HeadId", "ExpenditureQ1", AggregateFunction.First, departments, heads, "DepartmentId")
-            </td>
-            <td>
-                @Model.ReportWithPivot("Bootstrap.css", "HeadId", "TotalExpenditure", AggregateFunction.First, departments, heads, "DepartmentId")
-            </td>
-            
-        </tr>
-    </table>
+    <h2>Dashboard</h2>
+    @Html.ActionLink("Create New", "Create")
+    &nbsp;&nbsp;
+    @Html.ActionLink("Edit", "Edit", "Budget1");
+
+    @{ if (Model.First().Quarter == "Q1")
+        {
+            @Model.ReportWithPivot("Bootstrap.css", "HeadId", "ExpenditureQ1", AggregateFunction.First, departments, heads, "DepartmentId");
+            }
+        }
+
+
 
 </div>
-
